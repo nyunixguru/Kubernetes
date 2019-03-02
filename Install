@@ -58,3 +58,10 @@ minikube start
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
 
+[david@centos7 ~]$ sudo kubectl config use-context minikube
+[sudo] password for david: 
+Switched to context "minikube".
+
+[david@centos7 ~]$ sudo kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9m8s
