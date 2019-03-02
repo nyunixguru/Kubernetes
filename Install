@@ -1,6 +1,6 @@
 https://kubernetes.io/docs/tasks/tools/install-minikube/
 
-
+Install a hypervisor virtualbox
 
 Install kubectl
 
@@ -14,3 +14,13 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 yum install -y kubectl
+
+
+Install minikube
+You can install Minikube on Linux by downloading a static binary:
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube
+Here’s an easy way to add the Minikube executable to your path:
+sudo cp minikube /usr/local/bin && rm minikube
+
+
