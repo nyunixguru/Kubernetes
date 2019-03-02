@@ -1,4 +1,8 @@
+Installing minikube on Centos7
+
+
 https://kubernetes.io/docs/tasks/tools/install-minikube/
+
 
 Install a hypervisor virtualbox
 
@@ -65,3 +69,6 @@ Switched to context "minikube".
 [david@centos7 ~]$ sudo kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9m8s
+
+
+sudo minikube stop
