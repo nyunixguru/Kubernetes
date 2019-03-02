@@ -1,3 +1,7 @@
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+
+
 Install kubectl
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
