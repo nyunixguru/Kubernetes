@@ -2,6 +2,22 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 Install a hypervisor virtualbox
 
+[virtualbox]
+name=Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+
+yum install VirtualBox-6.0
+
+or
+https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0-6.0.4_128413_el7-1.x86_64.rpm
+rpm install
+
+
+
 Install kubectl
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
