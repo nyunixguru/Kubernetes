@@ -2,8 +2,8 @@ Running minikube without virtualbox as it was crashing due to no Virtualization 
 HP Proliant N40L Microserver
 
 Workaround
-1)Install kubectl
-2)Install minikube
+1)Install kubectl as before
+2)Install minikube as before
 3)Install Docker
 
 Starting minikube
