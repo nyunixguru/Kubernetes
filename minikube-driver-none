@@ -1,4 +1,4 @@
-Running minikube without virtualbox as it was crashing due to no virtualization enable inhardware on 
+Running minikube without virtualbox as it was crashing due to no Virtualization enabled in hardware on 
 HP Proliant N40L Microserver
 
 Workaround
@@ -34,37 +34,6 @@ Workaround
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
 
-
-[david@kubernetes ~]$ ls -a
-.              .bash_logout   .cache   Desktop    .esd_auth      .mozilla  .pki       Videos          .Xauthority
-..             .bash_profile  .config  Documents  .ICEauthority  Music     Public     .viminfo
-.bash_history  .bashrc        .dbus    Downloads  .local         Pictures  Templates  VirtualBox VMs
-
-
-[david@kubernetes ~]$ sudo more /root/.kube/config 
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority: /root/.minikube/ca.crt
-    server: https://192.168.1.9:8443
-  name: minikube
-contexts:
-- context:
-    cluster: minikube
-    user: minikube
-  name: minikube
-current-context: minikube
-kind: Config
-preferences: {}
-users:
-- name: minikube
-  user:
-    client-certificate: /root/.minikube/client.crt
-    client-key: /root/.minikube/client.key
-[david@kubernetes ~]$ su -
-Password: 
-Last login: Sat Mar  2 18:17:55 EST 2019 on pts/0
-ABRT has detected 3 problem(s). For more info run: abrt-cli list --since 1551568675
 
 [root@kubernetes ~]# kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
