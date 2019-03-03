@@ -28,20 +28,14 @@ Install Docker
 🤔  Verifying component health .....
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
+
+
 [david@kubernetes ~]$ ls -a
 .              .bash_logout   .cache   Desktop    .esd_auth      .mozilla  .pki       Videos          .Xauthority
 ..             .bash_profile  .config  Documents  .ICEauthority  Music     Public     .viminfo
 .bash_history  .bashrc        .dbus    Downloads  .local         Pictures  Templates  VirtualBox VMs
-[david@kubernetes ~]$ ls /root/.kube
-config
-[david@kubernetes ~]$ ls /root/.kube/config 
-/root/.kube/config
-[david@kubernetes ~]$ more /root/.kube/config 
-/root/.kube/config: Permission denied
-[david@kubernetes ~]$ sudo !$
-sudo /root/.kube/config
-[sudo] password for david: 
-sudo: /root/.kube/config: command not found
+
+
 [david@kubernetes ~]$ sudo more /root/.kube/config 
 apiVersion: v1
 clusters:
@@ -66,9 +60,11 @@ users:
 Password: 
 Last login: Sat Mar  2 18:17:55 EST 2019 on pts/0
 ABRT has detected 3 problem(s). For more info run: abrt-cli list --since 1551568675
+
 [root@kubernetes ~]# kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2m57s
+
 [root@kubernetes ~]# ls -a
 .                .bash_history  .bashrc  .cshrc                      .gvfs                 .kube      .pki
 ..               .bash_logout   .cache   .dbus                       .idlerc               .local     .tcshrc
@@ -77,12 +73,16 @@ anaconda-ks.cfg  .bash_profile  .config  docker-machine-driver-kvm2  initial-set
 [root@kubernetes ~]# kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
 kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
 deployment.apps/hello-minikube created
+
 [root@kubernetes ~]# kubectl get pods
 NAME                              READY   STATUS              RESTARTS   AGE
 hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          21s
-[root@kubernetes ~]# kubectl get pods
-NAME                              READY   STATUS              RESTARTS   AGE
-hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          26s
-[root@kubernetes ~]# kubectl get pods
-NAME                              READY   STATUS              RESTARTS   AGE
-hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          30s
+
+# Run another pod
+kubectl run hello-minikube1 --image=k8s.gcr.io/echoserver:1.4 --port=8080
+
+#kubectl get pods -o wide
+NAME                              READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+hello-minikube-5c856cbf98-gjqg9   1/1     Running   0          7m18s   172.17.0.4   minikube   <none>           <none>
+hello-minikube1-7fcc8db9d-g6fmn   1/1     Running   0          4m5s    172.17.0.5   minikube   <none>           <none>
+
