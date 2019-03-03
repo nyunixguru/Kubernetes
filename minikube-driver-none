@@ -86,3 +86,8 @@ deployment.apps/hello-minikube1   1/1     1            1           11m
 NAME                                        DESIRED   CURRENT   READY   AGE
 replicaset.apps/hello-minikube-5c856cbf98   1         1         1       14m
 replicaset.apps/hello-minikube1-7fcc8db9d   1         1         1       11m
+
+[root@kubernetes ~]# kubectl get pods hello-minikube-5c856cbf98-gjqg9 -o yaml
+
+#kubectl scale --replicas=3 replicaset.apps/hello-minikube-5c856cbf98
+
