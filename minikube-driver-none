@@ -86,3 +86,10 @@ NAME                              READY   STATUS    RESTARTS   AGE     IP       
 hello-minikube-5c856cbf98-gjqg9   1/1     Running   0          7m18s   172.17.0.4   minikube   <none>           <none>
 hello-minikube1-7fcc8db9d-g6fmn   1/1     Running   0          4m5s    172.17.0.5   minikube   <none>           <none>
 
+kubectl expose deployment hello-minikube --type=NodePort
+
+kubectl get services 
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+hello-minikube    NodePort    10.97.159.76    <none>        8080:30305/TCP   16s
+hello-minikube1   NodePort    10.111.70.246   <none>        8080:32605/TCP   8s
+kubernetes        ClusterIP   10.96.0.1       <none>        443/TCP          13m
