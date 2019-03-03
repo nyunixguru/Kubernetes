@@ -2,9 +2,11 @@ Running minikube without virtualbox as it was crashing due to no Virtualization 
 HP Proliant N40L Microserver
 
 Workaround
+1)Install kubectl
+2)Install minikube
+3)Install Docker
 
-1)Install Docker
-
+Starting minikube
 [david@kubernetes ~]$ sudo minikube start --vm-driver=none --apiserver-ips 127.0.0.1 --apiserver-name localhost
 😄  minikube v0.34.1 on linux (amd64)
 🤹  Configuring local host environment ...
@@ -34,18 +36,13 @@ Workaround
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
 
-
+kubectl running as root for now
 [root@kubernetes ~]# kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2m57s
 
-[root@kubernetes ~]# ls -a
-.                .bash_history  .bashrc  .cshrc                      .gvfs                 .kube      .pki
-..               .bash_logout   .cache   .dbus                       .idlerc               .local     .tcshrc
-anaconda-ks.cfg  .bash_profile  .config  docker-machine-driver-kvm2  initial-setup-ks.cfg  .minikube  .xauthpM9mE3
 
 [root@kubernetes ~]# kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
-kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
 deployment.apps/hello-minikube created
 
 [root@kubernetes ~]# kubectl get pods
@@ -68,7 +65,6 @@ hello-minikube    NodePort    10.97.159.76    <none>        8080:30305/TCP   16s
 hello-minikube1   NodePort    10.111.70.246   <none>        8080:32605/TCP   8s
 kubernetes        ClusterIP   10.96.0.1       <none>        443/TCP          13m
 
-
 [root@kubernetes ~]# kubectl get all
 NAME                                  READY   STATUS    RESTARTS   AGE
 pod/hello-minikube-5c856cbf98-gjqg9   1/1     Running   0          14m
@@ -90,4 +86,4 @@ replicaset.apps/hello-minikube1-7fcc8db9d   1         1         1       11m
 [root@kubernetes ~]# kubectl get pods hello-minikube-5c856cbf98-gjqg9 -o yaml
 
 #kubectl scale --replicas=3 replicaset.apps/hello-minikube-5c856cbf98
-
+#kubectl scale --current-replicas=1 --replicas=3 deployment.apps/hello-minikube
