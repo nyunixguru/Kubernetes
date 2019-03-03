@@ -1,0 +1,88 @@
+Install Docker
+
+[david@kubernetes ~]$ sudo minikube start --vm-driver=none --apiserver-ips 127.0.0.1 --apiserver-name localhost
+😄  minikube v0.34.1 on linux (amd64)
+🤹  Configuring local host environment ...
+
+⚠️  The 'none' driver provides limited isolation and may reduce system security and reliability.
+⚠️  For more information, see:
+👉  https://github.com/kubernetes/minikube/blob/master/docs/vmdriver-none.md
+
+⚠️  kubectl and minikube configuration will be stored in /root
+⚠️  To use kubectl or minikube commands as your own user, you may
+⚠️  need to relocate them. For example, to overwrite your own settings:
+
+    ▪ sudo mv /root/.kube /root/.minikube $HOME
+    ▪ sudo chown -R $USER /root/.kube /root/.minikube
+
+💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
+🔥  Creating none VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...
+📶  "minikube" IP address is 192.168.1.9
+🐳  Configuring Docker as the container runtime ...
+✨  Preparing Kubernetes environment ...
+💾  Downloading kubeadm v1.13.3
+💾  Downloading kubelet v1.13.3
+🚜  Pulling images required by Kubernetes v1.13.3 ...
+🚀  Launching Kubernetes v1.13.3 using kubeadm ... 
+🔑  Configuring cluster permissions ...
+🤔  Verifying component health .....
+💗  kubectl is now configured to use "minikube"
+🏄  Done! Thank you for using minikube!
+[david@kubernetes ~]$ ls -a
+.              .bash_logout   .cache   Desktop    .esd_auth      .mozilla  .pki       Videos          .Xauthority
+..             .bash_profile  .config  Documents  .ICEauthority  Music     Public     .viminfo
+.bash_history  .bashrc        .dbus    Downloads  .local         Pictures  Templates  VirtualBox VMs
+[david@kubernetes ~]$ ls /root/.kube
+config
+[david@kubernetes ~]$ ls /root/.kube/config 
+/root/.kube/config
+[david@kubernetes ~]$ more /root/.kube/config 
+/root/.kube/config: Permission denied
+[david@kubernetes ~]$ sudo !$
+sudo /root/.kube/config
+[sudo] password for david: 
+sudo: /root/.kube/config: command not found
+[david@kubernetes ~]$ sudo more /root/.kube/config 
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /root/.minikube/ca.crt
+    server: https://192.168.1.9:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /root/.minikube/client.crt
+    client-key: /root/.minikube/client.key
+[david@kubernetes ~]$ su -
+Password: 
+Last login: Sat Mar  2 18:17:55 EST 2019 on pts/0
+ABRT has detected 3 problem(s). For more info run: abrt-cli list --since 1551568675
+[root@kubernetes ~]# kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2m57s
+[root@kubernetes ~]# ls -a
+.                .bash_history  .bashrc  .cshrc                      .gvfs                 .kube      .pki
+..               .bash_logout   .cache   .dbus                       .idlerc               .local     .tcshrc
+anaconda-ks.cfg  .bash_profile  .config  docker-machine-driver-kvm2  initial-setup-ks.cfg  .minikube  .xauthpM9mE3
+
+[root@kubernetes ~]# kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
+kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
+deployment.apps/hello-minikube created
+[root@kubernetes ~]# kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          21s
+[root@kubernetes ~]# kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          26s
+[root@kubernetes ~]# kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+hello-minikube-5c856cbf98-gjqg9   0/1     ContainerCreating   0          30s
