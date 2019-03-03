@@ -1,4 +1,6 @@
 kubectl - Cheat Sheet
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 Kubectl Autocomplete
 BASH
 source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
@@ -245,16 +247,3 @@ Verbosity	Description
 --v=7	Display HTTP request headers.
 --v=8	Display HTTP request contents.
 --v=9	Display HTTP request contents without truncation of contents.
-What's next
-Learn more about Overview of kubectl.
-
-See kubectl options.
-
-Also kubectl Usage Conventions to understand how to use it in reusable scripts.
-
-See more community kubectl cheatsheets.
-
-Feedback
-Was this page helpful?
-
-Yes No
