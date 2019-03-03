@@ -1,4 +1,9 @@
-Install Docker
+Running minikube without virtualbox as it was crashing due to no virtualization enable inhardware on 
+HP Proliant N40L Microserver
+
+Workaround
+
+1)Install Docker
 
 [david@kubernetes ~]$ sudo minikube start --vm-driver=none --apiserver-ips 127.0.0.1 --apiserver-name localhost
 😄  minikube v0.34.1 on linux (amd64)
@@ -93,3 +98,22 @@ NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 hello-minikube    NodePort    10.97.159.76    <none>        8080:30305/TCP   16s
 hello-minikube1   NodePort    10.111.70.246   <none>        8080:32605/TCP   8s
 kubernetes        ClusterIP   10.96.0.1       <none>        443/TCP          13m
+
+
+[root@kubernetes ~]# kubectl get all
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/hello-minikube-5c856cbf98-gjqg9   1/1     Running   0          14m
+pod/hello-minikube1-7fcc8db9d-g6fmn   1/1     Running   0          11m
+
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/hello-minikube    NodePort    10.97.159.76    <none>        8080:30305/TCP   5m23s
+service/hello-minikube1   NodePort    10.111.70.246   <none>        8080:32605/TCP   5m15s
+service/kubernetes        ClusterIP   10.96.0.1       <none>        443/TCP          18m
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/hello-minikube    1/1     1            1           14m
+deployment.apps/hello-minikube1   1/1     1            1           11m
+
+NAME                                        DESIRED   CURRENT   READY   AGE
+replicaset.apps/hello-minikube-5c856cbf98   1         1         1       14m
+replicaset.apps/hello-minikube1-7fcc8db9d   1         1         1       11m
