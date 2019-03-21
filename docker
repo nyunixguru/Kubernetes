@@ -9,6 +9,7 @@ sudo docker ps
 docker images
 docker # list all commands
 docker exec --help
+docker inspect container_id  #
 
 docker run -it ubuntu bash
 CTRL-D
@@ -23,3 +24,8 @@ docker ps
 docker stop mysql1
 docker start mysql1
 docker exec -it mysql1 /bin/bash
+
+Running Jenkins container
+docker run jenkins
+docker inspect to get ip
+http://172.17.0.2:8080
