@@ -6,5 +6,18 @@ sudo yum install docker-ce docker-ce-cli containerd.io
 sudo systemctl start docker
 sudo docker run hello-world
 sudo docker ps
-sudo docker images
-sudo docker run -it ubuntu bash
+docker images
+docker # list all commands
+docker exec --help
+
+docker run -it ubuntu bash
+CTRL-D
+
+#MySql docker container
+docker pull mysql/mysql-server
+docker images
+docker run --name=mysql1 -d mysql/mysql-server 
+docker ps
+docker stop mysql1
+docker start mysql1
+docker exec -it mysql1 /bin/bash
