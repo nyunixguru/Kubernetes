@@ -13,6 +13,8 @@ docker exec --help
 docker run -it ubuntu bash
 CTRL-D
 
+docker run -d centos sleep 10 # run for 10 seconds and exit
+
 #MySql docker container
 docker pull mysql/mysql-server
 docker images
