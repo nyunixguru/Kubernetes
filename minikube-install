@@ -1,5 +1,6 @@
 Installing minikube on Centos7 using virtualbox vm driver
 
+The VM contains Docker image no need to install Docker
 
 https://kubernetes.io/docs/tasks/tools/install-minikube/
 
